@@ -34,6 +34,10 @@ The three-page dashboard runs in a browser. It's an HTML report, **not a Power B
 
 The **2,059 MW** figure is the maximum for a single record, not the simultaneous peak demand of the whole grid. Renewable share is a modeled assumption, not measured generation.
 
+## Seasonal analysis
+
+I also explored [seasonal demand and temperature relationships](docs/SEASONAL_ANALYSIS.md), with a [reproducible Python script](python/seasonal_demand.py). In the synthetic data, summer has the highest average consumption per record (**494.55 MWh**), and the overall temperature-consumption correlation is about **0.234**. These are descriptive relationships, not forecasts.
+
 ## What stood out to me
 
 **Industrial and residential demand account for most consumption.** Industrial contributes about **8.94M MWh (37.93%)**, followed by residential at **7.86M MWh (33.37%)**. If I were planning a forecasting exercise, these are the sectors I'd examine first.
