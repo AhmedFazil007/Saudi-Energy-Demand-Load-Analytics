@@ -1,107 +1,81 @@
-# Saudi Energy Demand & Load Analytics | 2022–2025
+# Saudi Energy Demand & Load Analytics
 
-**Excel · SQL · Python · Energy-sector data visualization**
+**Excel · Python · SQL · Interactive dashboard | 2022–2025**
 
-> **Synthetic data disclosure:** This is a fictional Saudi energy-demand scenario for portfolio demonstration. Estimated consumption and peak load are not real electricity-grid measurements. Renewable shares are assumptions, not verified generation figures.
+I built this project around a practical energy-planning question: **How can consumption, peak load, temperature and customer-sector data be brought together to make demand patterns easier to understand?**
 
-## Executive dashboard
+The dataset contains **58,440 synthetic daily city-sector observations** across **10 Saudi cities** and **four customer sectors**. It's a fictional scenario for analytics practice—not actual grid measurements or official energy statistics.
 
-![Saudi Energy Demand Executive Summary](assets/SEDI_Executive-Summary.png)
+## Explore the dashboard
 
-### Project overview
+**[Open the interactive dashboard](https://ahmedfazil007.github.io/Saudi-Energy-Demand-Load-Analytics/)**
 
-Analyze **58,440 synthetic daily city-sector observations** across 10 Saudi cities and four customer sectors (2022–2025). The objective is to understand electricity consumption, geographic and sector demand, temperature-related patterns, and modeled renewable-energy shares.
+![Energy executive dashboard](assets/SEDI_Executive-Summary.png)
 
-| Indicator | Dataset result |
+### Demand and temperature
+
+![Demand and temperature](assets/SEDI_Demand&Temparature.png)
+
+### Geographic and sector comparison
+
+![Geographic and sector](assets/SEDI_Geographic&Sector.png)
+
+The three-page dashboard runs in a browser. It's an HTML report, **not a Power BI (.pbix) file**.
+
+## A few numbers from the simulated dataset
+
+| Measure | Result |
 |---|---:|
-| Estimated electricity consumption | **23.56M MWh** |
-| Observations | **58,440** |
-| Maximum individual-record peak load | **2,059 MW** |
+| Estimated energy consumption | **23.56 million MWh** |
+| Daily city-sector observations | **58,440** |
+| Highest individual-record peak load | **2,059 MW** |
 | Mean recorded temperature | **24.98°C** |
 | Mean assumed renewable share | **48.46%** |
-| Cities / sectors | **10 / 4** |
 
-## Dashboard gallery
+The **2,059 MW** figure is the maximum for a single record, not the simultaneous peak demand of the whole grid. Renewable share is a modeled assumption, not measured generation.
 
-### 01 — Executive Summary
+## What stood out to me
 
-![Executive Summary](assets/SEDI_Executive-Summary.png)
+**Industrial and residential demand account for most consumption.** Industrial contributes about **8.94M MWh (37.93%)**, followed by residential at **7.86M MWh (33.37%)**. If I were planning a forecasting exercise, these are the sectors I'd examine first.
 
-Overview of energy consumption, key indicators, monthly trends, city comparisons, and sector demand.
+**Riyadh has the largest city-level share in this scenario.** Its estimated consumption is around **3.94M MWh (16.74%)**. I'd break that down by month, sector and temperature before drawing any planning conclusions.
 
-### 02 — Demand & Temperature
+**Annual totals look fairly steady.** Consumption stays around **5.88–5.90M MWh per year**. That makes the monthly and seasonal patterns especially worth examining; stable annual totals can hide meaningful variation.
 
-![Demand and Temperature](assets/SEDI_Demand&Temparature.png)
+These are descriptive findings from synthetic data, not evidence of real grid conditions or operational savings.
 
-Seasonal demand, temperature bands, and individual-record peak-load comparisons.
+## How I'd use this in a planning discussion
 
-### 03 — Geographic & Sector
+I'd focus on three things: identifying which sectors contribute most to demand, checking how consumption changes with temperature and season, and separating **energy consumption (MWh)** from **power demand (MW)**.
 
-![Geographic and Sector](assets/SEDI_Geographic&Sector.png)
+A real utility would need verified meter data, operational load measurements and forecasting validation before using these results to make capacity or investment decisions.
 
-Regional and city demand, sector composition, and assumed renewable-share comparisons.
+## Tools and files
 
-The dashboards use a **grid-green, solar-gold, and hydro-blue palette**. The images are screenshots; [launch the interactive website](https://ahmedfazil007.github.io/Saudi-Energy-Demand-Load-Analytics/) to explore the working report.
-
-## Key findings and recommendations
-
-1. **Sector demand concentration:** Industrial represents approximately **8.94M MWh (37.93%)**, followed by Residential at **7.86M MWh (33.37%)**. **Recommendation:** Prioritize forecasting scenarios for these sectors.
-2. **Geographic demand concentration:** Riyadh contributes approximately **3.94M MWh (16.74%)**. **Recommendation:** Review seasonal patterns and peak-load profiles for Riyadh.
-3. **Annual consumption stability:** Annual totals are approximately **5.88–5.90M MWh**. **Recommendation:** Analyze monthly and seasonal variation rather than annual totals alone.
-
-These are descriptive insights; they do not establish causality or demonstrate actual operational savings.
-
-## Excel, SQL and Python
-
-| File | Description |
+| File | Purpose |
 |---|---|
-| [Interactive dashboard (HTML)](dashboard/index.html) | Redesigned three-page browser-based report |
-| [Excel analytics workbook](excel/Saudi_Energy_Demand_Analysis.xlsx) | KPI summaries, tables, and charts |
-| [SQL queries](sql/energy_analysis.sql) | Six SQLite-compatible analysis queries |
-| [Python CSV-to-SQLite loader](python/load_sqlite.py) | Imports the source CSV into a local database |
-| [Python analytical summaries](python/analyze_energy.py) | Validates observations and exports grouped results |
+| [Interactive HTML dashboard](dashboard/index.html) | Three-page browser report |
+| [Excel analysis workbook](excel/Saudi_Energy_Demand_Analysis.xlsx) | KPI summaries and charts |
+| [Synthetic source data](data/03_energy_daily_synthetic.csv) | Daily city-sector observations |
+| [Python loader](python/load_sqlite.py) | CSV to SQLite |
+| [Python analysis](python/analyze_energy.py) | Checks and grouped summaries |
+| [SQL queries](sql/energy_analysis.sql) | Six SQLite-compatible queries |
 
-### How to reproduce
+## Reproduce the analysis
 
-1. Use the included source dataset at `data/03_energy_daily_synthetic.csv`.
-2. From the repository root, run `python python/load_sqlite.py` to create the local SQLite database.
-3. Run `python python/analyze_energy.py` to generate annual, monthly, city, region, and sector summaries.
-4. Open the Excel workbook to review KPI summaries and charts.
-5. Download `dashboard/index.html` and open it in Chrome or Edge to use the interactive dashboard.
+From the repository root:
 
-Python scripts use the standard library and require no additional pip packages.
-
-## Repository structure
-
-```text
-Saudi-Energy-Demand-Load-Analytics/
-├── index.html                    # GitHub Pages landing redirect
-├── README.md
-├── assets/
-│   ├── SEDI_Executive-Summary.png
-│   ├── SEDI_Demand&Temparature.png
-│   └── SEDI_Geographic&Sector.png
-├── dashboard/
-│   └── index.html                # Interactive three-page dashboard
-├── data/
-│   └── 03_energy_daily_synthetic.csv
-├── excel/
-│   └── Saudi_Energy_Demand_Analysis.xlsx
-├── python/
-│   ├── analyze_energy.py
-│   └── load_sqlite.py
-└── sql/
-    └── energy_analysis.sql
+```bash
+python python/load_sqlite.py
+python python/analyze_energy.py
 ```
 
-**[Launch the live dashboard](https://ahmedfazil007.github.io/Saudi-Energy-Demand-Load-Analytics/)** · [Open dashboard HTML](dashboard/index.html) · [Download source dataset](data/03_energy_daily_synthetic.csv)
+Both scripts use Python's standard library. Open `dashboard/index.html` in a browser to explore the dashboard, or use the live link above.
 
-## Data interpretation
+## What this project does—and doesn't—show
 
-- **MWh** measures energy consumption; **MW** measures power. A maximum single-record MW value must not be described as a simultaneous system-wide peak.
-- `renewable_share_assumption` is modeled, not measured.
-- This is a portfolio demonstration, not a live production energy monitoring system.
-- The dashboard is HTML-based, **not** a native Power BI (.pbix) or Tableau (.twbx) file.
+It demonstrates data preparation, KPI design, SQL analysis, reporting and energy-sector storytelling. It doesn't forecast actual Saudi electricity demand, measure real renewable generation or show verified operating improvements.
 
 ---
-**Skills demonstrated:** Excel · SQLite · Python · Data validation · KPI reporting · Energy analytics · Business intelligence · Dashboard visualization
+
+[Ahmed Fazil](https://github.com/AhmedFazil007)
