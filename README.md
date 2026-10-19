@@ -6,7 +6,7 @@
 
 ## Executive dashboard
 
-![Saudi Energy Demand Executive Summary](SEDI_Executive-Summary.png)
+![Saudi Energy Demand Executive Summary](assets/SEDI_Executive-Summary.png)
 
 ### Project overview
 
@@ -25,23 +25,23 @@ Analyze **58,440 synthetic daily city-sector observations** across 10 Saudi citi
 
 ### 01 — Executive Summary
 
-![Executive Summary](SEDI_Executive-Summary.png)
+![Executive Summary](assets/SEDI_Executive-Summary.png)
 
 Overview of energy consumption, key indicators, monthly trends, city comparisons, and sector demand.
 
 ### 02 — Demand & Temperature
 
-![Demand and Temperature](SEDI_Demand&Temparature.png)
+![Demand and Temperature](assets/SEDI_Demand&Temparature.png)
 
 Seasonal demand, temperature bands, and individual-record peak-load comparisons.
 
 ### 03 — Geographic & Sector
 
-![Geographic and Sector](SEDI_Geographic&Sector.png)
+![Geographic and Sector](assets/SEDI_Geographic&Sector.png)
 
 Regional and city demand, sector composition, and assumed renewable-share comparisons.
 
-The dashboards use a **grid-green, solar-gold, and hydro-blue palette**. These images are screenshots; [open the interactive HTML dashboard](Saudi_Energy_Demand_Dashboard.html) to explore the working report.
+The dashboards use a **grid-green, solar-gold, and hydro-blue palette**. The images are screenshots; [launch the interactive website](https://ahmedfazil007.github.io/Saudi-Energy-Demand-Load-Analytics/) to explore the working report.
 
 ## Key findings and recommendations
 
@@ -55,39 +55,46 @@ These are descriptive insights; they do not establish causality or demonstrate a
 
 | File | Description |
 |---|---|
-| [Interactive dashboard (HTML)](Saudi_Energy_Demand_Dashboard.html) | Redesigned three-page browser-based report |
-| [Excel analytics workbook](Saudi_Energy_Demand_Analysis.xlsx) | KPI summaries, tables, and charts |
+| [Interactive dashboard (HTML)](dashboard/index.html) | Redesigned three-page browser-based report |
+| [Excel analytics workbook](excel/Saudi_Energy_Demand_Analysis.xlsx) | KPI summaries, tables, and charts |
 | [SQL queries](sql/energy_analysis.sql) | Six SQLite-compatible analysis queries |
 | [Python CSV-to-SQLite loader](python/load_sqlite.py) | Imports the source CSV into a local database |
 | [Python analytical summaries](python/analyze_energy.py) | Validates observations and exports grouped results |
 
 ### How to reproduce
 
-1. Use the included source dataset at `03_energy_daily_synthetic.csv`.
+1. Use the included source dataset at `data/03_energy_daily_synthetic.csv`.
 2. From the repository root, run `python python/load_sqlite.py` to create the local SQLite database.
 3. Run `python python/analyze_energy.py` to generate annual, monthly, city, region, and sector summaries.
 4. Open the Excel workbook to review KPI summaries and charts.
-5. Download `Saudi_Energy_Demand_Dashboard.html` and open it in Chrome or Edge to use the interactive dashboard.
+5. Download `dashboard/index.html` and open it in Chrome or Edge to use the interactive dashboard.
 
 Python scripts use the standard library and require no additional pip packages.
 
-## Current repository structure
+## Repository structure
 
 ```text
 Saudi-Energy-Demand-Load-Analytics/
+├── index.html                    # GitHub Pages landing redirect
 ├── README.md
-├── 03_energy_daily_synthetic.csv
-├── SEDI_Executive-Summary.png
-├── SEDI_Demand&Temparature.png
-├── SEDI_Geographic&Sector.png
-├── Saudi_Energy_Demand_Analysis.xlsx
-├── Saudi_Energy_Demand_Dashboard.html
+├── assets/
+│   ├── SEDI_Executive-Summary.png
+│   ├── SEDI_Demand&Temparature.png
+│   └── SEDI_Geographic&Sector.png
+├── dashboard/
+│   └── index.html                # Interactive three-page dashboard
+├── data/
+│   └── 03_energy_daily_synthetic.csv
+├── excel/
+│   └── Saudi_Energy_Demand_Analysis.xlsx
 ├── python/
 │   ├── analyze_energy.py
 │   └── load_sqlite.py
 └── sql/
     └── energy_analysis.sql
 ```
+
+**[Launch the live dashboard](https://ahmedfazil007.github.io/Saudi-Energy-Demand-Load-Analytics/)** · [Open dashboard HTML](dashboard/index.html) · [Download source dataset](data/03_energy_daily_synthetic.csv)
 
 ## Data interpretation
 
