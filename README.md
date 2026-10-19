@@ -2,7 +2,7 @@
 
 **Excel · Python · SQL · Interactive dashboard | 2022–2025**
 
-I built this project around a practical energy-planning question: **How can consumption, peak load, temperature and customer-sector data be brought together to make demand patterns easier to understand?**
+The question behind this project was: **How can consumption, peak load, temperature and customer-sector data be brought together to make demand patterns easier to understand?**
 
 The dataset contains **58,440 synthetic daily city-sector observations** across **10 Saudi cities** and **four customer sectors**. It's a fictional scenario for analytics practice—not actual grid measurements or official energy statistics.
 
@@ -36,7 +36,7 @@ The **2,059 MW** figure is the maximum for a single record, not the simultaneous
 
 ## Seasonal analysis
 
-I also explored [seasonal demand and temperature relationships](docs/SEASONAL_ANALYSIS.md), with a [reproducible Python script](python/seasonal_demand.py). In the synthetic data, summer has the highest average consumption per record (**494.55 MWh**), and the overall temperature-consumption correlation is about **0.234**. These are descriptive relationships, not forecasts.
+I looked more closely at [seasonal demand and temperature relationships](docs/SEASONAL_ANALYSIS.md), with a [reproducible Python script](python/seasonal_demand.py). In the synthetic data, summer has the highest average consumption per record (**494.55 MWh**), and the overall temperature-consumption correlation is about **0.234**. These are descriptive relationships, not forecasts.
 
 ## What stood out to me
 
